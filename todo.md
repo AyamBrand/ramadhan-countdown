@@ -24,3 +24,10 @@
 - [x] Update app.config.ts dengan branding
 - [ ] Final testing
 - [ ] Checkpoint untuk deployment
+
+## Widget Android
+- [x] Membuat Android App Widget (medium size 4x4)
+- [x] Memaparkan countdown (hari, jam, minit)
+- [x] Tap widget untuk buka aplikasi
+- [x] Update widget setiap minit
+- [x] Styling widget dengan tema Ramadhan
