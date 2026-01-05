@@ -63,3 +63,5 @@
 - [x] Fix warna "BERBUKA" di night mode (pastikan readable)
 - [x] Buang tab Kalender (tidak menarik)
 - [x] Ubah warna warning dark ke #FCD34D untuk readable
+- [x] Tambah warna berbuka light/dark mode berbeza untuk kontras
+- [x] Fix zone selector button text color di light/dark mode

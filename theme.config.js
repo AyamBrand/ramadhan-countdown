@@ -10,6 +10,7 @@ const themeColors = {
   success: { light: '#22C55E', dark: '#4ADE80' },
   warning: { light: '#F59E0B', dark: '#FCD34D' },
   error: { light: '#EF4444', dark: '#F87171' },
+  berbuka: { light: '#D97706', dark: '#FCD34D' },
 };
 
 module.exports = { themeColors };

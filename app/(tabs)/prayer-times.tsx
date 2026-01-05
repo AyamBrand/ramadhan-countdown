@@ -113,7 +113,7 @@ export default function PrayerTimesScreen() {
                     <Text
                       className={`text-xs font-semibold ${
                         selectedZone === zone.code
-                          ? "text-background"
+                          ? "text-foreground"
                           : "text-foreground"
                       }`}
                     >
