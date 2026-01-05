@@ -40,3 +40,13 @@
 - [x] Ubah App Name ke "Ramadhan Countdown"
 - [x] Random motivational quotes (10 varian)
 - [x] Widget dengan saat dan tajuk "Kiraan Ramadhan"
+
+## Halaman Jadual Imsak/Berbuka
+- [x] Membuat halaman baru untuk jadual imsak/berbuka
+- [x] Integrasi dengan e-solat.gov.my API
+- [x] Pilihan negeri untuk seluruh Malaysia
+- [x] Senarai harian jadual (1-30 Ramadhan)
+- [x] Theme toggle button (Bulan/Matahari)
+- [x] Dark/Light mode support
+- [x] Halaman Settings dengan theme toggle
+- [x] Tab navigation (Home, Jadual, Tetapan)

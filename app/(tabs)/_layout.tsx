@@ -24,7 +24,6 @@ export default function TabLayout() {
             if (Platform.OS === "web") {
               window.close();
             } else {
-              // For native Android/iOS
               require("react-native").BackHandler.exitApp();
             }
           },
@@ -53,14 +52,22 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Keluar",
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="chevron.right" color={color} />,
-          tabBarButton: (props) => (
-            <HapticTab
-              {...props}
-              onPress={handleExit}
-            />
-          ),
+          title: "Home",
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="prayer-times"
+        options={{
+          title: "Jadual",
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="calendar" color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="settings"
+        options={{
+          title: "Tetapan",
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="gear" color={color} />,
         }}
       />
     </Tabs>
