@@ -1,16 +1,15 @@
-import { useState } from "react";
 import { View, Text, ScrollView, Pressable, FlatList } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
 import { PrayerTimesDisplayCorrect } from "@/components/prayer-times-display-correct";
 import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-correct";
+import { useStoredZone } from "@/hooks/use-stored-zone";
 
 /**
  * Halaman Jadual Imsak dan Berbuka Puasa
  * Menampilkan jadual waktu solat untuk setiap negeri dan zon di Malaysia
  */
 export default function PrayerTimesScreen() {
-  const [selectedState, setSelectedState] = useState("SGR"); // Default: Selangor
-  const [selectedZone, setSelectedZone] = useState("SGR01"); // Default: Selangor zone 1
+  const { selectedState, selectedZone, saveState, saveZone, isLoading } = useStoredZone();
 
   const currentStateData = MALAYSIA_ZONES[selectedState as keyof typeof MALAYSIA_ZONES];
   const stateList = Object.entries(MALAYSIA_ZONES).map(([key, value]) => ({
@@ -18,12 +17,12 @@ export default function PrayerTimesScreen() {
     name: value.name,
   }));
 
-  const handleStateChange = (stateCode: string) => {
-    setSelectedState(stateCode);
+  const handleStateChange = async (stateCode: string) => {
+    await saveState(stateCode);
     // Automatically select first zone of the state
     const zones = MALAYSIA_ZONES[stateCode as keyof typeof MALAYSIA_ZONES]?.zones;
     if (zones && zones.length > 0) {
-      setSelectedZone(zones[0].code);
+      await saveZone(zones[0].code);
     }
   };
 
@@ -54,6 +53,7 @@ export default function PrayerTimesScreen() {
               <Pressable
                 key={state.code}
                 onPress={() => handleStateChange(state.code)}
+                disabled={isLoading}
                 style={({ pressed }) => [
                   {
                     opacity: pressed ? 0.7 : 1,
@@ -96,7 +96,8 @@ export default function PrayerTimesScreen() {
               {currentStateData.zones.map((zone) => (
                 <Pressable
                   key={zone.code}
-                  onPress={() => setSelectedZone(zone.code)}
+                  onPress={() => saveZone(zone.code)}
+                  disabled={isLoading}
                   style={({ pressed }) => [
                     {
                       opacity: pressed ? 0.7 : 1,
