@@ -1,15 +1,31 @@
 import { useState } from "react";
-import { View, Text, ScrollView, Pressable } from "react-native";
+import { View, Text, ScrollView, Pressable, FlatList } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
-import { PrayerTimesDisplay } from "@/components/prayer-times-display";
-import { MALAYSIA_STATES } from "@/hooks/use-prayer-times";
+import { PrayerTimesDisplayV2 } from "@/components/prayer-times-display-v2";
+import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-v2";
 
 /**
  * Halaman Jadual Imsak dan Berbuka Puasa
- * Menampilkan jadual waktu solat untuk setiap negeri di Malaysia
+ * Menampilkan jadual waktu solat untuk setiap negeri dan zon di Malaysia
  */
 export default function PrayerTimesScreen() {
-  const [selectedState, setSelectedState] = useState(10); // Default: Selangor
+  const [selectedState, setSelectedState] = useState("SGR"); // Default: Selangor
+  const [selectedZone, setSelectedZone] = useState("SGR01"); // Default: Selangor zone 1
+
+  const currentStateData = MALAYSIA_ZONES[selectedState as keyof typeof MALAYSIA_ZONES];
+  const stateList = Object.entries(MALAYSIA_ZONES).map(([key, value]) => ({
+    code: key,
+    name: value.name,
+  }));
+
+  const handleStateChange = (stateCode: string) => {
+    setSelectedState(stateCode);
+    // Automatically select first zone of the state
+    const zones = MALAYSIA_ZONES[stateCode as keyof typeof MALAYSIA_ZONES]?.zones;
+    if (zones && zones.length > 0) {
+      setSelectedZone(zones[0].code);
+    }
+  };
 
   return (
     <ScreenContainer className="p-4">
@@ -27,17 +43,17 @@ export default function PrayerTimesScreen() {
         {/* State Selector */}
         <View className="mb-4">
           <Text className="text-sm font-semibold text-foreground mb-2">
-            Pilih Negeri:
+            Negeri:
           </Text>
           <ScrollView
             horizontal
             showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ gap: 8 }}
+            contentContainerStyle={{ gap: 8, paddingBottom: 4 }}
           >
-            {MALAYSIA_STATES.map((state) => (
+            {stateList.map((state) => (
               <Pressable
                 key={state.code}
-                onPress={() => setSelectedState(state.code)}
+                onPress={() => handleStateChange(state.code)}
                 style={({ pressed }) => [
                   {
                     opacity: pressed ? 0.7 : 1,
@@ -45,7 +61,7 @@ export default function PrayerTimesScreen() {
                 ]}
               >
                 <View
-                  className={`px-4 py-2 rounded-full border-2 ${
+                  className={`px-3 py-2 rounded-full border-2 ${
                     selectedState === state.code
                       ? "bg-primary border-primary"
                       : "bg-surface border-border"
@@ -66,9 +82,63 @@ export default function PrayerTimesScreen() {
           </ScrollView>
         </View>
 
+        {/* Zone Selector */}
+        {currentStateData && (
+          <View className="mb-4">
+            <Text className="text-sm font-semibold text-foreground mb-2">
+              Zon ({currentStateData.zones.length}):
+            </Text>
+            <ScrollView
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              contentContainerStyle={{ gap: 8, paddingBottom: 4 }}
+            >
+              {currentStateData.zones.map((zone) => (
+                <Pressable
+                  key={zone.code}
+                  onPress={() => setSelectedZone(zone.code)}
+                  style={({ pressed }) => [
+                    {
+                      opacity: pressed ? 0.7 : 1,
+                    },
+                  ]}
+                >
+                  <View
+                    className={`px-3 py-2 rounded-lg border-2 ${
+                      selectedZone === zone.code
+                        ? "bg-accent border-accent"
+                        : "bg-surface border-border"
+                    }`}
+                  >
+                    <Text
+                      className={`text-xs font-semibold ${
+                        selectedZone === zone.code
+                          ? "text-background"
+                          : "text-foreground"
+                      }`}
+                    >
+                      {zone.code}
+                    </Text>
+                  </View>
+                </Pressable>
+              ))}
+            </ScrollView>
+            {/* Zone Description */}
+            <Text className="text-xs text-muted mt-2">
+              {
+                currentStateData.zones.find((z) => z.code === selectedZone)
+                  ?.name
+              }
+            </Text>
+          </View>
+        )}
+
         {/* Prayer Times List */}
         <View className="flex-1">
-          <PrayerTimesDisplay stateCode={selectedState} />
+          <PrayerTimesDisplayV2
+            selectedState={selectedState}
+            selectedZone={selectedZone}
+          />
         </View>
       </View>
     </ScreenContainer>

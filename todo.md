@@ -50,3 +50,9 @@
 - [x] Dark/Light mode support
 - [x] Halaman Settings dengan theme toggle
 - [x] Tab navigation (Home, Jadual, Tetapan)
+
+
+## Bug Fixes
+- [x] Fix API fetch error dari e-solat.gov.my
+- [x] Tampilkan semua negeri (bukan hanya 5)
+- [x] Tambah pilihan zon untuk setiap negeri
