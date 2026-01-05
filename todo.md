@@ -61,6 +61,5 @@
 
 ## Fixes & Improvements
 - [x] Fix warna "BERBUKA" di night mode (pastikan readable)
-- [x] Buat tab ketiga - Kalender Ramadhan
-- [x] Papar tarikh penting dalam Ramadhan (Nuzul Al-Quran, Laylat Al-Qadr, Hari Raya)
-- [x] Highlight hari-hari penting dalam kalender
+- [x] Buang tab Kalender (tidak menarik)
+- [x] Ubah warna warning dark ke #FCD34D untuk readable
