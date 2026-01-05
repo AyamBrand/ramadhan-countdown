@@ -1,0 +1,37 @@
+{
+  "countdown": {
+    "title": "Ramadhan Akan Tiba",
+    "days": "HARI",
+    "hours": "JAM",
+    "minutes": "MIN",
+    "seconds": "SAAT"
+  },
+  "prayerTimes": {
+    "title": "Jadual Imsak & Berbuka",
+    "selectState": "Pilih Negeri",
+    "selectZone": "Pilih Zon",
+    "imsak": "Imsak",
+    "iftar": "Berbuka"
+  },
+  "settings": {
+    "title": "Tetapan",
+    "darkMode": "Mod Gelap",
+    "language": "Bahasa",
+    "notification": "Notifikasi Imsak & Berbuka",
+    "notificationStatus": "Aktif",
+    "notificationStatusOff": "Tidak Aktif",
+    "notificationOn": "Hidup",
+    "notificationOff": "Mati",
+    "notificationBefore": "Peringatan sebelum waktu:",
+    "testNotification": "Uji Notifikasi",
+    "about": "Tentang Aplikasi",
+    "aboutText": "Aplikasi untuk mengira hari, jam, minit, dan saat sehingga 1 Ramadhan tiba.",
+    "exitApp": "Keluar Aplikasi",
+    "exitConfirm": "Anda yakin ingin keluar dari aplikasi?"
+  },
+  "common": {
+    "cancel": "Batal",
+    "confirm": "Sahkan",
+    "close": "Tutup"
+  }
+}

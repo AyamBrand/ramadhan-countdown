@@ -4,6 +4,8 @@ import { ScreenContainer } from "@/components/screen-container";
 import { useThemeContext } from "@/lib/theme-provider";
 import { useColors } from "@/hooks/use-colors";
 import { useNotificationSettings } from "@/hooks/use-notification-settings";
+import { useTranslation } from "@/hooks/use-translation";
+import { useLanguageContext } from "@/lib/language-provider";
 
 /**
  * Halaman Tetapan (Settings)
@@ -13,6 +15,8 @@ export default function SettingsScreen() {
   const { colorScheme, setColorScheme } = useThemeContext();
   const colors = useColors();
   const { notificationMinutes, notificationEnabled, saveNotificationMinutes, toggleNotification } = useNotificationSettings();
+  const t = useTranslation();
+  const { language, setLanguage } = useLanguageContext();
 
   const toggleTheme = () => {
     setColorScheme(colorScheme === "light" ? "dark" : "light");
@@ -45,8 +49,44 @@ export default function SettingsScreen() {
         {/* Header */}
         <View className="mb-6">
           <Text className="text-2xl font-bold text-foreground">
-            Tetapan
+            {t('settings.title')}
           </Text>
+        </View>
+
+        {/* Language Toggle Section */}
+        <View className="bg-surface rounded-2xl p-4 mb-4 border border-border">
+          <View className="flex-row justify-between items-center">
+            <View className="flex-1">
+              <Text className="text-lg font-semibold text-foreground">
+                {t('settings.language')}
+              </Text>
+              <Text className="text-xs text-muted mt-1">
+                {language === 'ms' ? 'Bahasa Melayu' : 'English'}
+              </Text>
+            </View>
+            <View className="flex-row gap-2">
+              <Pressable
+                onPress={() => setLanguage('ms')}
+                style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+              >
+                <View className={language === 'ms' ? "bg-primary border-2 border-primary px-3 py-2 rounded-lg" : "bg-background border-2 border-border px-3 py-2 rounded-lg"}>
+                  <Text className={language === 'ms' ? "text-sm font-semibold text-background" : "text-sm font-semibold text-foreground"}>
+                    MS
+                  </Text>
+                </View>
+              </Pressable>
+              <Pressable
+                onPress={() => setLanguage('en')}
+                style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+              >
+                <View className={language === 'en' ? "bg-primary border-2 border-primary px-3 py-2 rounded-lg" : "bg-background border-2 border-border px-3 py-2 rounded-lg"}>
+                  <Text className={language === 'en' ? "text-sm font-semibold text-background" : "text-sm font-semibold text-foreground"}>
+                    EN
+                  </Text>
+                </View>
+              </Pressable>
+            </View>
+          </View>
         </View>
 
         {/* Notification Settings Section */}
@@ -64,8 +104,8 @@ export default function SettingsScreen() {
               onPress={toggleNotification}
               style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
             >
-              <View className={notificationEnabled ? "bg-success/20 px-4 py-2 rounded-lg" : "bg-error/20 px-4 py-2 rounded-lg"}>
-                <Text className={notificationEnabled ? "text-sm font-semibold text-success" : "text-sm font-semibold text-error"}>
+              <View className={notificationEnabled ? "bg-primary px-4 py-2 rounded-lg" : "bg-error/20 px-4 py-2 rounded-lg"}>
+                <Text className={notificationEnabled ? "text-sm font-semibold text-background" : "text-sm font-semibold text-error"}>
                   {notificationEnabled ? "Hidup" : "Mati"}
                 </Text>
               </View>
@@ -109,6 +149,21 @@ export default function SettingsScreen() {
                   </View>
                 </Pressable>
               </View>
+              
+              {/* Test Notification Button */}
+              <Pressable
+                onPress={() => {
+                  // Simple test notification
+                  alert(`Notifikasi uji akan keluar dalam ${notificationMinutes} minit`);
+                }}
+                style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+              >
+                <View className="bg-primary/10 border-2 border-primary rounded-lg p-3 mt-3">
+                  <Text className="text-sm font-semibold text-primary text-center">
+                    Uji Notifikasi
+                  </Text>
+                </View>
+              </Pressable>
             </View>
           )}
         </View>

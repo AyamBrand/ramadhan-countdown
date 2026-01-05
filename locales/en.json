@@ -1,0 +1,37 @@
+{
+  "countdown": {
+    "title": "Ramadhan Coming Soon",
+    "days": "DAYS",
+    "hours": "HOURS",
+    "minutes": "MINUTES",
+    "seconds": "SECONDS"
+  },
+  "prayerTimes": {
+    "title": "Suhoor & Iftar Times",
+    "selectState": "Select State",
+    "selectZone": "Select Zone",
+    "imsak": "Suhoor",
+    "iftar": "Iftar"
+  },
+  "settings": {
+    "title": "Settings",
+    "darkMode": "Dark Mode",
+    "language": "Language",
+    "notification": "Suhoor & Iftar Notifications",
+    "notificationStatus": "Active",
+    "notificationStatusOff": "Inactive",
+    "notificationOn": "On",
+    "notificationOff": "Off",
+    "notificationBefore": "Alert before time:",
+    "testNotification": "Test Notification",
+    "about": "About App",
+    "aboutText": "An app to count down the days, hours, minutes, and seconds until Ramadhan arrives.",
+    "exitApp": "Exit App",
+    "exitConfirm": "Are you sure you want to exit the app?"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "close": "Close"
+  }
+}

@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useColors } from "@/hooks/use-colors";
 import { useRandomQuote } from "@/hooks/use-random-quote";
+import { useTranslation } from "@/hooks/use-translation";
 
 const styles = StyleSheet.create({
   androidNumberFont: {
@@ -17,12 +18,13 @@ export function CountdownDisplay() {
   const countdown = useCountdown();
   const colors = useColors();
   const quote = useRandomQuote();
+  const t = useTranslation();
 
   if (countdown.isRamadan) {
     return (
       <View className="items-center justify-center gap-4">
         <Text className="text-5xl font-bold text-primary">
-          Selamat Datang Ramadhan! 🌙
+          {t('countdown.title')} 🌙
         </Text>
         <Text className="text-lg text-muted text-center">
           Semoga Ramadhan ini membawa berkah dan rahmat kepada kita semua.
@@ -36,7 +38,7 @@ export function CountdownDisplay() {
       {/* Heading */}
       <View className="items-center gap-2">
         <Text className="text-4xl font-bold text-foreground">
-          Ramadhan Akan Tiba
+          {t('countdown.title')}
         </Text>
         <Text className="text-base text-muted">
           18 Februari 2026
@@ -49,7 +51,7 @@ export function CountdownDisplay() {
           {countdown.days}
         </Text>
         <Text className="text-sm text-muted mt-3 uppercase tracking-wider">
-          Hari
+          {t('countdown.days')}
         </Text>
       </View>
 
@@ -61,7 +63,7 @@ export function CountdownDisplay() {
             {String(countdown.hours).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
-            Jam
+            {t('countdown.hours')}
           </Text>
         </View>
 
@@ -71,7 +73,7 @@ export function CountdownDisplay() {
             {String(countdown.minutes).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
-            Min
+            {t('countdown.minutes')}
           </Text>
         </View>
 
@@ -81,7 +83,7 @@ export function CountdownDisplay() {
             {String(countdown.seconds).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
-            Saat
+            {t('countdown.seconds')}
           </Text>
         </View>
       </View>
