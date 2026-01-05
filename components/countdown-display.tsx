@@ -1,6 +1,7 @@
 import { View, Text } from "react-native";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useColors } from "@/hooks/use-colors";
+import { useRandomQuote } from "@/hooks/use-random-quote";
 
 /**
  * Komponen untuk memaparkan countdown Ramadhan
@@ -9,6 +10,7 @@ import { useColors } from "@/hooks/use-colors";
 export function CountdownDisplay() {
   const countdown = useCountdown();
   const colors = useColors();
+  const quote = useRandomQuote();
 
   if (countdown.isRamadan) {
     return (
@@ -81,9 +83,7 @@ export function CountdownDisplay() {
       {/* Motivational Message */}
       <View className="bg-surface rounded-2xl p-6 max-w-xs">
         <Text className="text-center text-base text-foreground leading-relaxed">
-          🌙 Ramadhan adalah bulan berkah penuh dengan kebaikan dan ampunan.
-          Persiapkan diri anda untuk menyambut bulan mulia ini dengan penuh
-          semangat dan keikhlasan.
+          {quote}
         </Text>
       </View>
     </View>

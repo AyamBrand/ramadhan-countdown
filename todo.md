@@ -27,7 +27,16 @@
 
 ## Widget Android
 - [x] Membuat Android App Widget (medium size 4x4)
-- [x] Memaparkan countdown (hari, jam, minit)
+- [x] Memaparkan countdown (hari, jam, minit, saat)
 - [x] Tap widget untuk buka aplikasi
 - [x] Update widget setiap minit
 - [x] Styling widget dengan tema Ramadhan
+- [x] Tajuk widget "Kiraan Ramadhan"
+
+## Requirement Pengguna
+- [x] Link website dengan redirect ke https://mylink.la/annamir
+- [x] Credit nama: Dibangunkan oleh: ©2026 Muktasyaf AnNamir
+- [x] Buang Home button, ganti dengan Exit button
+- [x] Ubah App Name ke "Ramadhan Countdown"
+- [x] Random motivational quotes (10 varian)
+- [x] Widget dengan saat dan tajuk "Kiraan Ramadhan"

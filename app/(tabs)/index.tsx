@@ -1,4 +1,5 @@
-import { ScrollView, View } from "react-native";
+import { ScrollView, View, Pressable, Linking } from "react-native";
+import { Text } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
 import { CountdownDisplay } from "@/components/countdown-display";
 
@@ -18,6 +19,22 @@ export default function HomeScreen() {
           <CountdownDisplay />
         </View>
       </ScrollView>
+
+      {/* Website Link & Credit */}
+      <View className="mt-8 gap-2 items-center pb-4">
+        <Pressable 
+          onPress={() => Linking.openURL("https://mylink.la/annamir")}
+          style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+        >
+          <Text className="text-xs text-primary font-semibold">
+            www.annamir.my
+          </Text>
+        </Pressable>
+        
+        <Text className="text-xs text-muted">
+          Dibangunkan oleh: ©2026 Muktasyaf AnNamir
+        </Text>
+      </View>
     </ScreenContainer>
   );
 }
