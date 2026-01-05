@@ -72,11 +72,11 @@ export function PrayerTimesDisplayCorrect({ selectedState, selectedZone }: Praye
         </View>
 
         {/* Berbuka (Maghrib) */}
-        <View className="flex-row justify-between items-center bg-accent/10 rounded-lg p-3">
-          <Text className="text-sm font-semibold text-accent">
+        <View className="flex-row justify-between items-center bg-warning/20 rounded-lg p-3 border border-warning">
+          <Text className="text-sm font-semibold text-warning">
             Berbuka
           </Text>
-          <Text className="text-lg font-bold text-accent">
+          <Text className="text-lg font-bold text-warning">
             {item.maghrib}
           </Text>
         </View>

@@ -57,3 +57,10 @@
 - [x] Tampilkan semua negeri (16 negeri + WP)
 - [x] Tambah pilihan zon untuk setiap negeri (70+ zon)
 - [x] Parse Unix timestamp dari API ke HH:MM format
+
+
+## Fixes & Improvements
+- [x] Fix warna "BERBUKA" di night mode (pastikan readable)
+- [x] Buat tab ketiga - Kalender Ramadhan
+- [x] Papar tarikh penting dalam Ramadhan (Nuzul Al-Quran, Laylat Al-Qadr, Hari Raya)
+- [x] Highlight hari-hari penting dalam kalender
