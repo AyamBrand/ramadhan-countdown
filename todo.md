@@ -53,6 +53,7 @@
 
 
 ## Bug Fixes
-- [x] Fix API fetch error dari e-solat.gov.my
-- [x] Tampilkan semua negeri (bukan hanya 5)
-- [x] Tambah pilihan zon untuk setiap negeri
+- [x] Fix API fetch error - guna waktusolat.app API yang benar
+- [x] Tampilkan semua negeri (16 negeri + WP)
+- [x] Tambah pilihan zon untuk setiap negeri (70+ zon)
+- [x] Parse Unix timestamp dari API ke HH:MM format

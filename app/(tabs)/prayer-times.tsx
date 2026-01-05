@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { View, Text, ScrollView, Pressable, FlatList } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
-import { PrayerTimesDisplayV2 } from "@/components/prayer-times-display-v2";
-import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-v2";
+import { PrayerTimesDisplayCorrect } from "@/components/prayer-times-display-correct";
+import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-correct";
 
 /**
  * Halaman Jadual Imsak dan Berbuka Puasa
@@ -135,7 +135,7 @@ export default function PrayerTimesScreen() {
 
         {/* Prayer Times List */}
         <View className="flex-1">
-          <PrayerTimesDisplayV2
+          <PrayerTimesDisplayCorrect
             selectedState={selectedState}
             selectedZone={selectedZone}
           />
