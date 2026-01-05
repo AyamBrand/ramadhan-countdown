@@ -68,6 +68,12 @@ const config: ExpoConfig = {
   plugins: [
     "expo-router",
     [
+      "expo-font",
+      {
+        fonts: ["./assets/fonts/ARIALBLACKITALIC.ttf"],
+      },
+    ],
+    [
       "expo-audio",
       {
         microphonePermission: "Allow $(PRODUCT_NAME) to access your microphone.",

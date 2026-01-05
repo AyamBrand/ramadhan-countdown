@@ -1,7 +1,13 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useCountdown } from "@/hooks/use-countdown";
 import { useColors } from "@/hooks/use-colors";
 import { useRandomQuote } from "@/hooks/use-random-quote";
+
+const styles = StyleSheet.create({
+  androidNumberFont: {
+    fontFamily: "ARIALBLACKITALIC",
+  },
+});
 
 /**
  * Komponen untuk memaparkan countdown Ramadhan
@@ -37,21 +43,21 @@ export function CountdownDisplay() {
         </Text>
       </View>
 
-      {/* Countdown Grid */}
-      <View className="flex-row gap-3 justify-center flex-wrap">
-        {/* Days */}
-        <View className="items-center bg-surface rounded-2xl p-6 w-20">
-          <Text className="text-4xl font-bold text-primary">
-            {countdown.days}
-          </Text>
-          <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
-            Hari
-          </Text>
-        </View>
+      {/* Countdown - Days (Large, Center) */}
+      <View className="items-center bg-surface rounded-2xl p-8">
+        <Text className="text-9xl font-bold text-primary" style={styles.androidNumberFont}>
+          {countdown.days}
+        </Text>
+        <Text className="text-sm text-muted mt-3 uppercase tracking-wider">
+          Hari
+        </Text>
+      </View>
 
+      {/* Countdown - Hours, Minutes, Seconds (Small, Below) */}
+      <View className="flex-row gap-3 justify-center">
         {/* Hours */}
-        <View className="items-center bg-surface rounded-2xl p-6 w-20">
-          <Text className="text-4xl font-bold text-primary">
+        <View className="items-center bg-surface rounded-2xl p-4 w-20">
+          <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.hours).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
@@ -60,8 +66,8 @@ export function CountdownDisplay() {
         </View>
 
         {/* Minutes */}
-        <View className="items-center bg-surface rounded-2xl p-6 w-20">
-          <Text className="text-4xl font-bold text-primary">
+        <View className="items-center bg-surface rounded-2xl p-4 w-20">
+          <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.minutes).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">
@@ -70,8 +76,8 @@ export function CountdownDisplay() {
         </View>
 
         {/* Seconds */}
-        <View className="items-center bg-surface rounded-2xl p-6 w-20">
-          <Text className="text-4xl font-bold text-primary">
+        <View className="items-center bg-surface rounded-2xl p-4 w-20">
+          <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.seconds).padStart(2, "0")}
           </Text>
           <Text className="text-xs text-muted mt-2 uppercase tracking-wider">

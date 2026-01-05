@@ -1,5 +1,6 @@
-import { View, type ViewProps } from "react-native";
+import { View, type ViewProps, ImageBackground } from "react-native";
 import { SafeAreaView, type Edge } from "react-native-safe-area-context";
+import { useColorScheme } from "@/hooks/use-color-scheme";
 
 import { cn } from "@/lib/utils";
 
@@ -47,22 +48,36 @@ export function ScreenContainer({
   style,
   ...props
 }: ScreenContainerProps) {
+  const colorScheme = useColorScheme();
+  
+  // Select background image based on color scheme
+  const backgroundImage = colorScheme === "dark" 
+    ? require("@/assets/images/background-dark.png")
+    : require("@/assets/images/background-light.png");
+
   return (
-    <View
-      className={cn(
-        "flex-1",
-        "bg-background",
-        containerClassName
-      )}
-      {...props}
+    <ImageBackground
+      source={backgroundImage}
+      resizeMode="cover"
+      style={{
+        flex: 1,
+      }}
     >
-      <SafeAreaView
-        edges={edges}
-        className={cn("flex-1", safeAreaClassName)}
-        style={style}
+      <View
+        className={cn(
+          "flex-1",
+          containerClassName
+        )}
+        {...props}
       >
-        <View className={cn("flex-1", className)}>{children}</View>
-      </SafeAreaView>
-    </View>
+        <SafeAreaView
+          edges={edges}
+          className={cn("flex-1", safeAreaClassName)}
+          style={style}
+        >
+          <View className={cn("flex-1", className)}>{children}</View>
+        </SafeAreaView>
+      </View>
+    </ImageBackground>
   );
 }

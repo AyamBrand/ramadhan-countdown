@@ -66,3 +66,9 @@
 - [x] Tambah warna berbuka light/dark mode berbeza untuk kontras
 - [x] Fix zone selector button text color di light/dark mode
 - [x] Tambah 30 Kata Hikmah Ramadhan dengan random display
+
+## Background Pattern
+- [ ] Inject Islamic pattern tiles ke aplikasi
+- [ ] Set opacity rendah (15-20%) untuk subtle effect
+- [ ] Add solid background color atau gradient
+- [ ] Test di light dan dark mode
