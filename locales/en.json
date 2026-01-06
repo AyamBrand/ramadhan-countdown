@@ -46,5 +46,10 @@
     "loading": "Loading...",
     "error": "Error",
     "success": "Success"
+  },
+  "offline": {
+    "indicator": "Offline Mode",
+    "cached": "Using cached data",
+    "synced": "Data synced"
   }
 }

@@ -3,7 +3,7 @@ import { ScreenContainer } from "@/components/screen-container";
 import { PrayerTimesDisplayCorrect } from "@/components/prayer-times-display-correct";
 import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-correct";
 import { useStoredZone } from "@/hooks/use-stored-zone";
-import { usePrayerTimesAPI } from "@/hooks/use-prayer-times-api";
+import { useOfflinePrayerTimes } from "@/hooks/use-offline-prayer-times";
 import { ActivityIndicator } from "react-native";
 import { useColors } from "@/hooks/use-colors";
 import { useTranslation } from "@/hooks/use-translation";
@@ -17,7 +17,7 @@ export default function PrayerTimesScreen() {
   const colors = useColors();
   const t = useTranslation();
   const now = new Date();
-  const { prayerTimes, loading: apiLoading } = usePrayerTimesAPI(
+  const { prayerTimes, loading: apiLoading, isOffline, isCached } = useOfflinePrayerTimes(
     selectedZone,
     now.getFullYear(),
     now.getMonth() + 1
@@ -50,6 +50,22 @@ export default function PrayerTimesScreen() {
             Ramadhan 1447H / Februari 2026
           </Text>
         </View>
+
+        {/* Offline Indicator */}
+        {isOffline && (
+          <View className="bg-warning/20 border-l-4 border-warning rounded-lg p-3 mb-4">
+            <Text className="text-xs font-semibold text-warning">
+              {t('offline.indicator')} • {t('offline.cached')}
+            </Text>
+          </View>
+        )}
+        {isCached && !isOffline && (
+          <View className="bg-success/20 border-l-4 border-success rounded-lg p-3 mb-4">
+            <Text className="text-xs font-semibold text-success">
+              {t('offline.synced')}
+            </Text>
+          </View>
+        )}
 
         {/* State Selector */}
         <View className="mb-4">

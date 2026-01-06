@@ -46,5 +46,10 @@
     "loading": "Memuatkan...",
     "error": "Ralat",
     "success": "Berjaya"
+  },
+  "offline": {
+    "indicator": "Mod Luar Talian",
+    "cached": "Menggunakan data cache",
+    "synced": "Data disegerakkan"
   }
 }
