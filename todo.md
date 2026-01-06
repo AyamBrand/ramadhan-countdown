@@ -26,12 +26,12 @@
 - [ ] Checkpoint untuk deployment
 
 ## Widget Android
-- [x] Membuat Android App Widget (medium size 4x4)
-- [x] Memaparkan countdown (hari, jam, minit, saat)
-- [x] Tap widget untuk buka aplikasi
-- [x] Update widget setiap minit
-- [x] Styling widget dengan tema Ramadhan
-- [x] Tajuk widget "Kiraan Ramadhan"
+- [x] Membuat Android App Widget (medium size 4x4) - REMOVED (library incompatible dengan EAS build)
+- [x] Memaparkan countdown (hari, jam, minit, saat) - REMOVED
+- [x] Tap widget untuk buka aplikasi - REMOVED
+- [x] Update widget setiap minit - REMOVED
+- [x] Styling widget dengan tema Ramadhan - REMOVED
+- [x] Tajuk widget "Kiraan Ramadhan" - REMOVED
 
 ## Requirement Pengguna
 - [x] Link website dengan redirect ke https://mylink.la/annamir
@@ -72,3 +72,14 @@
 - [ ] Set opacity rendah (15-20%) untuk subtle effect
 - [ ] Add solid background color atau gradient
 - [ ] Test di light dan dark mode
+
+
+## Build & Deployment (Current)
+- [x] Fix eas.json configuration - remove invalid serviceAccount field
+- [x] Add EAS project ID ke app.config.ts
+- [ ] Complete Android APK build via EAS
+- [ ] Download APK from Expo dashboard
+- [ ] Create GitHub Release
+- [ ] Upload APK to GitHub Release
+- [ ] Make repository public
+- [ ] Add comprehensive README dengan download instructions
