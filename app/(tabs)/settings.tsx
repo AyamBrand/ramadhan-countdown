@@ -218,7 +218,7 @@ export default function SettingsScreen() {
           <Text className="text-sm text-muted mb-2">
             Ramadhan Countdown v1.0.1
           </Text>
-          <Text className="text-xs text-muted">
+          <Text className="text-xs text-muted leading-relaxed">
             {t('settings.aboutText')}
           </Text>
         </View>

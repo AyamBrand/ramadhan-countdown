@@ -30,10 +30,12 @@
     "notificationBefore": "Peringatan sebelum waktu:",
     "testNotification": "Uji Notifikasi",
     "about": "Tentang Aplikasi",
-    "aboutText": "Aplikasi untuk mengira hari, jam, minit, dan saat sehingga 1 Ramadhan tiba.",
+    "aboutText": "Aplikasi ini memaparkan kiraan detik menuju 1 Ramadhan dalam hari, jam, minit, dan saat.\nIa turut menyediakan jadual waktu solat lengkap termasuk waktu imsak dan berbuka puasa untuk seluruh negeri dan zon di Malaysia.\n\nNota: Waktu solat diambil daripada api.waktusolat.app yang menggunakan data Solat API dari JAKIM.",
+    "aboutTitle": "Tentang",
     "exitApp": "Keluar Aplikasi",
     "exitConfirm": "Anda yakin ingin keluar dari aplikasi?",
-    "shareApp": "Kongsi Aplikasi Ini"
+    "shareApp": "Kongsi Aplikasi Ini",
+    "close": "Tutup"
   },
   "home": {
     "title": "Ramadhan Akan Tiba",
@@ -45,7 +47,6 @@
   "common": {
     "cancel": "Batal",
     "confirm": "Sahkan",
-    "close": "Tutup",
     "loading": "Memuatkan...",
     "error": "Ralat",
     "success": "Berjaya"

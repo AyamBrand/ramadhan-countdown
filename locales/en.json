@@ -30,10 +30,12 @@
     "notificationBefore": "Alert before time:",
     "testNotification": "Test Notification",
     "about": "About Application",
-    "aboutText": "An application to count the days, hours, minutes, and seconds until the month of Ramadhan arrives.",
+    "aboutTitle": "About",
+    "aboutText": "This app provides a real-time countdown to the 1st of Ramadhan, showing days, hours, minutes, and seconds.\nIt also includes complete prayer times, including imsak and iftar, for all states and zones in Malaysia.\n\nNote: Prayer times are sourced from api.waktusolat.app, which uses JAKIM's Solat API data.",
     "exitApp": "Exit Application",
     "exitConfirm": "Are you sure you want to exit the application?",
-    "shareApp": "Share This Application"
+    "shareApp": "Share This Application",
+    "close": "Close"
   },
   "home": {
     "title": "Ramadhan Coming Soon",
@@ -45,8 +47,8 @@
   "common": {
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "close": "Close",
     "loading": "Loading...",
+    "close": "Close",
     "error": "Error",
     "success": "Success"
   },
