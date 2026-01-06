@@ -2,6 +2,7 @@ import { ScrollView, View, Pressable, Linking } from "react-native";
 import { Text } from "react-native";
 import { ScreenContainer } from "@/components/screen-container";
 import { CountdownDisplay } from "@/components/countdown-display";
+import { useTranslation } from "@/hooks/use-translation";
 
 /**
  * Home Screen - Ramadan Countdown
@@ -9,6 +10,7 @@ import { CountdownDisplay } from "@/components/countdown-display";
  * Skrin utama yang memaparkan countdown Ramadhan dengan hari, jam, minit, dan saat.
  */
 export default function HomeScreen() {
+  const t = useTranslation();
   return (
     <ScreenContainer className="p-6">
       <ScrollView
@@ -32,7 +34,7 @@ export default function HomeScreen() {
         </Pressable>
         
         <Text className="text-xs text-muted">
-          Dibangunkan oleh: ©2026 Muktasyaf AnNamir
+          {t('home.poweredBy')}
         </Text>
       </View>
     </ScreenContainer>
