@@ -7,31 +7,44 @@
     "seconds": "SECONDS"
   },
   "prayerTimes": {
-    "title": "Suhoor & Iftar Times",
-    "selectState": "Select State",
-    "selectZone": "Select Zone",
+    "title": "Prayer Times Schedule",
+    "selectState": "State",
+    "selectZone": "Zone",
     "imsak": "Suhoor",
-    "iftar": "Iftar"
+    "iftar": "Iftar/Maghrib",
+    "state": "State",
+    "zone": "Zone",
+    "day": "Day"
   },
   "settings": {
     "title": "Settings",
     "darkMode": "Dark Mode",
     "language": "Language",
     "notification": "Suhoor & Iftar Notifications",
-    "notificationStatus": "Active",
-    "notificationStatusOff": "Inactive",
+    "notificationStatus": "Enabled",
+    "notificationStatusOff": "Disabled",
     "notificationOn": "On",
     "notificationOff": "Off",
     "notificationBefore": "Alert before time:",
     "testNotification": "Test Notification",
-    "about": "About App",
-    "aboutText": "An app to count down the days, hours, minutes, and seconds until Ramadhan arrives.",
-    "exitApp": "Exit App",
-    "exitConfirm": "Are you sure you want to exit the app?"
+    "about": "About Application",
+    "aboutText": "An application to count the days, hours, minutes, and seconds until the month of Ramadhan arrives.",
+    "exitApp": "Exit Application",
+    "exitConfirm": "Are you sure you want to exit the application?",
+    "shareApp": "Share This Application"
+  },
+  "home": {
+    "title": "Ramadhan Coming Soon",
+    "date": "Date",
+    "poweredBy": "Powered by ©2026 Muktasyaf AnNamir",
+    "quote": "Quote"
   },
   "common": {
     "cancel": "Cancel",
     "confirm": "Confirm",
-    "close": "Close"
+    "close": "Close",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
   }
 }

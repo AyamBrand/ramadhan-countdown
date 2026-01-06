@@ -86,16 +86,7 @@ export default function SettingsScreen() {
                   </Text>
                 </View>
               </Pressable>
-              <Pressable
-                onPress={() => setLanguage('ar')}
-                style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
-              >
-                <View className={language === 'ar' ? "bg-primary border-2 border-primary px-3 py-2 rounded-lg" : "bg-background border-2 border-border px-3 py-2 rounded-lg"}>
-                  <Text className={language === 'ar' ? "text-sm font-semibold text-background" : "text-sm font-semibold text-foreground"}>
-                    AR
-                  </Text>
-                </View>
-              </Pressable>
+
             </View>
           </View>
         </View>

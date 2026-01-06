@@ -1,14 +1,12 @@
 import { useLanguageContext } from "@/lib/language-provider";
 import ms from "@/locales/ms.json";
 import en from "@/locales/en.json";
-import ar from "@/locales/ar.json";
 
 type TranslationKeys = typeof ms;
 
-const translations: Record<"ms" | "en" | "ar", TranslationKeys> = {
+const translations: Record<"ms" | "en", TranslationKeys> = {
   ms,
   en,
-  ar,
 };
 
 /**
@@ -24,7 +22,7 @@ export function useTranslation() {
    */
   const t = (key: string): string => {
     const keys = key.split(".");
-    let value: any = translations[language as "ms" | "en" | "ar"];
+    let value: any = translations[language as "ms" | "en"];
 
     for (const k of keys) {
       if (value && typeof value === "object" && k in value) {

@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-type Language = "ms" | "en" | "ar";
+type Language = "ms" | "en";
 
 interface LanguageContextType {
   language: Language;
@@ -18,7 +18,6 @@ const DEFAULT_LANGUAGE: Language = "ms";
 export const SUPPORTED_LANGUAGES: Record<Language, string> = {
   ms: "Bahasa Melayu",
   en: "English",
-  ar: "العربية",
 };
 
 /**
@@ -36,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const loadLanguage = async () => {
     try {
       const savedLanguage = await AsyncStorage.getItem(STORAGE_KEY);
-      if (savedLanguage === "ms" || savedLanguage === "en" || savedLanguage === "ar") {
+      if (savedLanguage === "ms" || savedLanguage === "en") {
         setLanguageState(savedLanguage);
       }
     } catch (error) {

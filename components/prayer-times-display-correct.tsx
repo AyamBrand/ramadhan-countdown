@@ -74,7 +74,7 @@ export function PrayerTimesDisplayCorrect({ selectedState, selectedZone }: Praye
         {/* Berbuka (Maghrib) */}
         <View className="flex-row justify-between items-center rounded-lg p-3 border" style={{ backgroundColor: (colors as any).berbuka + '33', borderColor: (colors as any).berbuka }}>
           <Text className="text-sm font-semibold" style={{ color: (colors as any).berbuka }}>
-            Berbuka
+            Berbuka/Maghrib
           </Text>
           <Text className="text-lg font-bold" style={{ color: (colors as any).berbuka }}>
             {item.maghrib}

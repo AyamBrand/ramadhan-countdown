@@ -8,10 +8,13 @@
   },
   "prayerTimes": {
     "title": "Jadual Imsak & Berbuka",
-    "selectState": "Pilih Negeri",
-    "selectZone": "Pilih Zon",
+    "selectState": "Negeri",
+    "selectZone": "Zon",
     "imsak": "Imsak",
-    "iftar": "Berbuka"
+    "iftar": "Berbuka/Maghrib",
+    "state": "Negeri",
+    "zone": "Zon",
+    "day": "Hari"
   },
   "settings": {
     "title": "Tetapan",
@@ -27,11 +30,21 @@
     "about": "Tentang Aplikasi",
     "aboutText": "Aplikasi untuk mengira hari, jam, minit, dan saat sehingga 1 Ramadhan tiba.",
     "exitApp": "Keluar Aplikasi",
-    "exitConfirm": "Anda yakin ingin keluar dari aplikasi?"
+    "exitConfirm": "Anda yakin ingin keluar dari aplikasi?",
+    "shareApp": "Kongsi Aplikasi Ini"
+  },
+  "home": {
+    "title": "Ramadhan Akan Tiba",
+    "date": "Tarikh",
+    "poweredBy": "Dibangunkan oleh ©2026 Muktasyaf AnNamir",
+    "quote": "Kata Hikmah"
   },
   "common": {
     "cancel": "Batal",
     "confirm": "Sahkan",
-    "close": "Tutup"
+    "close": "Tutup",
+    "loading": "Memuatkan...",
+    "error": "Ralat",
+    "success": "Berjaya"
   }
 }

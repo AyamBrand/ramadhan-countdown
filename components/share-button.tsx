@@ -34,6 +34,8 @@ export function ShareButton({
     }
   };
 
+  const shareButtonText = t('settings.shareApp');
+
   return (
     <Pressable
       onPress={handleShare}
@@ -45,7 +47,7 @@ export function ShareButton({
     >
       <View className={`bg-primary px-4 py-3 rounded-lg items-center justify-center ${className}`}>
         <Text className="text-background font-semibold">
-          📤 Kongsi
+          📤 {shareButtonText}
         </Text>
       </View>
     </Pressable>
