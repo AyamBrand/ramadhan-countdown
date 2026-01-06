@@ -12,7 +12,7 @@ export type NotificationMinutes = 5 | 10 | 15;
  */
 export function useNotificationSettings() {
   const [notificationMinutes, setNotificationMinutes] = useState<NotificationMinutes>(10); // Default: 10 minit
-  const [notificationEnabled, setNotificationEnabled] = useState(true); // Default: enabled
+  const [notificationEnabled, setNotificationEnabled] = useState(false); // Default: disabled
   const [isLoading, setIsLoading] = useState(true);
 
   // Load pengaturan notifikasi dari AsyncStorage saat app pertama kali dibuka

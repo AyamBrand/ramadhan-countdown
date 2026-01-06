@@ -6,6 +6,7 @@ import { useColors } from "@/hooks/use-colors";
 import { useNotificationSettings } from "@/hooks/use-notification-settings";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguageContext } from "@/lib/language-provider";
+import { ShareButton } from "@/components/share-button";
 
 /**
  * Halaman Tetapan (Settings)
@@ -82,6 +83,16 @@ export default function SettingsScreen() {
                 <View className={language === 'en' ? "bg-primary border-2 border-primary px-3 py-2 rounded-lg" : "bg-background border-2 border-border px-3 py-2 rounded-lg"}>
                   <Text className={language === 'en' ? "text-sm font-semibold text-background" : "text-sm font-semibold text-foreground"}>
                     EN
+                  </Text>
+                </View>
+              </Pressable>
+              <Pressable
+                onPress={() => setLanguage('ar')}
+                style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }]}
+              >
+                <View className={language === 'ar' ? "bg-primary border-2 border-primary px-3 py-2 rounded-lg" : "bg-background border-2 border-border px-3 py-2 rounded-lg"}>
+                  <Text className={language === 'ar' ? "text-sm font-semibold text-background" : "text-sm font-semibold text-foreground"}>
+                    AR
                   </Text>
                 </View>
               </Pressable>
@@ -219,6 +230,15 @@ export default function SettingsScreen() {
           <Text className="text-xs text-muted">
             Aplikasi untuk mengira hari, jam, minit, dan saat sehingga 1 Ramadhan tiba.
           </Text>
+        </View>
+
+        {/* Share Button */}
+        <View className="mb-4">
+          <ShareButton
+            title="Ramadhan Akan Tiba"
+            message="Ramadhan Akan Tiba - Aplikasi countdown untuk Malaysia 🌙"
+            url="https://www.annamir.my"
+          />
         </View>
 
         {/* Exit Button */}

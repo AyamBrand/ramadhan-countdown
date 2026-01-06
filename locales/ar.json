@@ -1,0 +1,37 @@
+{
+  "countdown": {
+    "title": "رمضان قادم قريبا",
+    "days": "أيام",
+    "hours": "ساعات",
+    "minutes": "دقائق",
+    "seconds": "ثوان"
+  },
+  "prayerTimes": {
+    "title": "أوقات السحور والإفطار",
+    "selectState": "اختر الولاية",
+    "selectZone": "اختر المنطقة",
+    "imsak": "السحور",
+    "iftar": "الإفطار"
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "darkMode": "الوضع الليلي",
+    "language": "اللغة",
+    "notification": "إشعارات السحور والإفطار",
+    "notificationStatus": "مفعل",
+    "notificationStatusOff": "معطل",
+    "notificationOn": "تشغيل",
+    "notificationOff": "إيقاف",
+    "notificationBefore": "التنبيه قبل الوقت:",
+    "testNotification": "اختبر الإشعار",
+    "about": "عن التطبيق",
+    "aboutText": "تطبيق لحساب الأيام والساعات والدقائق والثواني حتى حلول شهر رمضان.",
+    "exitApp": "خروج من التطبيق",
+    "exitConfirm": "هل أنت متأكد أنك تريد الخروج من التطبيق؟"
+  },
+  "common": {
+    "cancel": "إلغاء",
+    "confirm": "تأكيد",
+    "close": "إغلاق"
+  }
+}

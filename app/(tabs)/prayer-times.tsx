@@ -3,6 +3,9 @@ import { ScreenContainer } from "@/components/screen-container";
 import { PrayerTimesDisplayCorrect } from "@/components/prayer-times-display-correct";
 import { MALAYSIA_ZONES } from "@/hooks/use-prayer-times-correct";
 import { useStoredZone } from "@/hooks/use-stored-zone";
+import { usePrayerTimesAPI } from "@/hooks/use-prayer-times-api";
+import { ActivityIndicator } from "react-native";
+import { useColors } from "@/hooks/use-colors";
 
 /**
  * Halaman Jadual Imsak dan Berbuka Puasa
@@ -10,6 +13,13 @@ import { useStoredZone } from "@/hooks/use-stored-zone";
  */
 export default function PrayerTimesScreen() {
   const { selectedState, selectedZone, saveState, saveZone, isLoading } = useStoredZone();
+  const colors = useColors();
+  const now = new Date();
+  const { prayerTimes, loading: apiLoading } = usePrayerTimesAPI(
+    selectedZone,
+    now.getFullYear(),
+    now.getMonth() + 1
+  );
 
   const currentStateData = MALAYSIA_ZONES[selectedState as keyof typeof MALAYSIA_ZONES];
   const stateList = Object.entries(MALAYSIA_ZONES).map(([key, value]) => ({
