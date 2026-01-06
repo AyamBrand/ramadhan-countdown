@@ -6,6 +6,7 @@ import { useStoredZone } from "@/hooks/use-stored-zone";
 import { usePrayerTimesAPI } from "@/hooks/use-prayer-times-api";
 import { ActivityIndicator } from "react-native";
 import { useColors } from "@/hooks/use-colors";
+import { useTranslation } from "@/hooks/use-translation";
 
 /**
  * Halaman Jadual Imsak dan Berbuka Puasa
@@ -14,6 +15,7 @@ import { useColors } from "@/hooks/use-colors";
 export default function PrayerTimesScreen() {
   const { selectedState, selectedZone, saveState, saveZone, isLoading } = useStoredZone();
   const colors = useColors();
+  const t = useTranslation();
   const now = new Date();
   const { prayerTimes, loading: apiLoading } = usePrayerTimesAPI(
     selectedZone,
@@ -42,7 +44,7 @@ export default function PrayerTimesScreen() {
         {/* Header */}
         <View className="mb-4">
           <Text className="text-2xl font-bold text-foreground mb-2">
-            Jadual Imsak & Berbuka
+            {t('prayerTimes.title')}
           </Text>
           <Text className="text-sm text-muted">
             Ramadhan 1447H / Februari 2026
@@ -52,7 +54,7 @@ export default function PrayerTimesScreen() {
         {/* State Selector */}
         <View className="mb-4">
           <Text className="text-sm font-semibold text-foreground mb-2">
-            Negeri:
+            {t('prayerTimes.state')}:
           </Text>
           <ScrollView
             horizontal
@@ -96,7 +98,7 @@ export default function PrayerTimesScreen() {
         {currentStateData && (
           <View className="mb-4">
             <Text className="text-sm font-semibold text-foreground mb-2">
-              Zon ({currentStateData.zones.length}):
+              {t('prayerTimes.zone')} ({currentStateData.zones.length}):
             </Text>
             <ScrollView
               horizontal

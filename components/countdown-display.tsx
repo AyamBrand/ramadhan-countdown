@@ -27,7 +27,7 @@ export function CountdownDisplay() {
           {t('countdown.title')} 🌙
         </Text>
         <Text className="text-lg text-muted text-center">
-          Semoga Ramadhan ini membawa berkah dan rahmat kepada kita semua.
+          {t('home.quote')}
         </Text>
       </View>
     );
@@ -41,7 +41,7 @@ export function CountdownDisplay() {
           {t('countdown.title')}
         </Text>
         <Text className="text-base text-muted">
-          18 Februari 2026
+          {t('home.date')}: 18 Februari 2026
         </Text>
       </View>
 

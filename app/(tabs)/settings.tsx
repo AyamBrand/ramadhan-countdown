@@ -25,12 +25,12 @@ export default function SettingsScreen() {
 
   const handleExit = () => {
     Alert.alert(
-      "Keluar Aplikasi",
-      "Anda yakin ingin keluar dari aplikasi?",
+      t('settings.exitApp'),
+      t('settings.exitConfirm'),
       [
-        { text: "Batal", onPress: () => {}, style: "cancel" },
+        { text: t('common.cancel'), onPress: () => {}, style: "cancel" },
         {
-          text: "Keluar",
+          text: t('settings.exitApp'),
           onPress: () => {
             if (typeof window !== "undefined") {
               window.close();
@@ -96,10 +96,10 @@ export default function SettingsScreen() {
           <View className="flex-row justify-between items-center mb-4">
             <View className="flex-1">
               <Text className="text-lg font-semibold text-foreground">
-                Notifikasi Imsak & Berbuka
+                {t('settings.notification')}
               </Text>
               <Text className="text-xs text-muted mt-1">
-                {notificationEnabled ? "Aktif" : "Tidak Aktif"}
+                {notificationEnabled ? t('settings.notificationStatus') : t('settings.notificationStatusOff')}
               </Text>
             </View>
             <Pressable
@@ -108,7 +108,7 @@ export default function SettingsScreen() {
             >
               <View className={notificationEnabled ? "bg-primary px-4 py-2 rounded-lg" : "bg-error/20 px-4 py-2 rounded-lg"}>
                 <Text className={notificationEnabled ? "text-sm font-semibold text-background" : "text-sm font-semibold text-error"}>
-                  {notificationEnabled ? "Hidup" : "Mati"}
+                  {notificationEnabled ? t('settings.notificationOn') : t('settings.notificationOff')}
                 </Text>
               </View>
             </Pressable>
@@ -117,7 +117,7 @@ export default function SettingsScreen() {
           {notificationEnabled && (
             <View>
               <Text className="text-sm font-semibold text-foreground mb-2">
-                Peringatan sebelum waktu:
+                {t('settings.notificationBefore')}
               </Text>
               <View className="flex-row gap-2">
                 <Pressable
@@ -162,7 +162,7 @@ export default function SettingsScreen() {
               >
                 <View className="bg-primary/10 border-2 border-primary rounded-lg p-3 mt-3">
                   <Text className="text-sm font-semibold text-primary text-center">
-                    Uji Notifikasi
+                    {t('settings.testNotification')}
                   </Text>
                 </View>
               </Pressable>
@@ -175,10 +175,10 @@ export default function SettingsScreen() {
           <View className="flex-row justify-between items-center">
             <View className="flex-1">
               <Text className="text-lg font-semibold text-foreground">
-                Mod Gelap
+                {t('settings.darkMode')}
               </Text>
               <Text className="text-xs text-muted mt-1">
-                {colorScheme === "dark" ? "Aktif" : "Tidak Aktif"}
+                {colorScheme === "dark" ? t('settings.notificationStatus') : t('settings.notificationStatusOff')}
               </Text>
             </View>
             <Pressable
@@ -213,13 +213,13 @@ export default function SettingsScreen() {
         {/* About Section */}
         <View className="bg-surface rounded-2xl p-4 mb-4 border border-border">
           <Text className="text-lg font-semibold text-foreground mb-2">
-            Tentang Aplikasi
+            {t('settings.about')}
           </Text>
           <Text className="text-sm text-muted mb-2">
             Ramadhan Countdown v1.0.1
           </Text>
           <Text className="text-xs text-muted">
-            Aplikasi untuk mengira hari, jam, minit, dan saat sehingga 1 Ramadhan tiba.
+            {t('settings.aboutText')}
           </Text>
         </View>
 
@@ -244,7 +244,7 @@ export default function SettingsScreen() {
           >
             <View className="bg-error/20 rounded-lg p-4 items-center">
               <Text className="text-error font-semibold">
-                Keluar Aplikasi
+                {t('settings.exitApp')}
               </Text>
             </View>
           </Pressable>

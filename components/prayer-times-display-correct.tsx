@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, ActivityIndicator, FlatList, Pressable } from "react-native";
 import { usePrayerTimesCorrect, MALAYSIA_ZONES, type PrayerTime } from "@/hooks/use-prayer-times-correct";
 import { useColors } from "@/hooks/use-colors";
+import { useTranslation } from "@/hooks/use-translation";
 import { useState } from "react";
 
 interface PrayerTimesDisplayCorrectProps {
@@ -14,12 +15,13 @@ interface PrayerTimesDisplayCorrectProps {
 export function PrayerTimesDisplayCorrect({ selectedState, selectedZone }: PrayerTimesDisplayCorrectProps) {
   const { loading, error, data } = usePrayerTimesCorrect(selectedZone, 2026, 2);
   const colors = useColors();
+  const t = useTranslation();
 
   if (loading) {
     return (
       <View className="flex-1 justify-center items-center">
         <ActivityIndicator size="large" color={colors.primary} />
-        <Text className="text-muted mt-4">Memuatkan data...</Text>
+        <Text className="text-muted mt-4">{t('common.loading')}</Text>
       </View>
     );
   }
@@ -28,7 +30,7 @@ export function PrayerTimesDisplayCorrect({ selectedState, selectedZone }: Praye
     return (
       <View className="flex-1 justify-center items-center p-4">
         <Text className="text-error text-center font-semibold">
-          Ralat: {error}
+          {t('common.error')}: {error}
         </Text>
         <Text className="text-muted text-center mt-2 text-xs">
           Sila pilih zon yang betul atau periksa sambungan internet anda
@@ -52,7 +54,7 @@ export function PrayerTimesDisplayCorrect({ selectedState, selectedZone }: Praye
       {/* Header - Hari dan Tarikh */}
       <View className="flex-row justify-between items-center mb-3 pb-3 border-b border-border">
         <Text className="text-lg font-bold text-foreground">
-          Hari {item.day}
+          {t('prayerTimes.day')} {item.day}
         </Text>
         <Text className="text-xs text-muted">
           {item.date}
