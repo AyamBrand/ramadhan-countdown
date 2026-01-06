@@ -47,7 +47,7 @@ export default function PrayerTimesScreen() {
             {t('prayerTimes.title')}
           </Text>
           <Text className="text-sm text-muted">
-            Ramadhan 1447H / Februari 2026
+            Ramadhan 1447H / {t('prayerTimes.month')} 2026
           </Text>
         </View>
 

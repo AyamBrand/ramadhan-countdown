@@ -5,10 +5,12 @@ import { Alert, Platform } from "react-native";
 import { HapticTab } from "@/components/haptic-tab";
 import { IconSymbol } from "@/components/ui/icon-symbol";
 import { useColors } from "@/hooks/use-colors";
+import { useTranslation } from "@/hooks/use-translation";
 
 export default function TabLayout() {
   const colors = useColors();
   const insets = useSafeAreaInsets();
+  const t = useTranslation();
   const bottomPadding = Platform.OS === "web" ? 12 : Math.max(insets.bottom, 8);
   const tabBarHeight = 56 + bottomPadding;
 
@@ -59,14 +61,14 @@ export default function TabLayout() {
       <Tabs.Screen
         name="prayer-times"
         options={{
-          title: "Jadual",
+          title: t('prayerTimes.tabName'),
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="calendar" color={color} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
-          title: "Tetapan",
+          title: t('settings.title'),
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="gear" color={color} />,
         }}
       />

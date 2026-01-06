@@ -41,7 +41,7 @@ export function CountdownDisplay() {
           {t('countdown.title')}
         </Text>
         <Text className="text-base text-muted">
-          {t('home.date')}: 18 Februari 2026
+          {t('home.date')}: 18 {t('home.month')} 2026
         </Text>
       </View>
 

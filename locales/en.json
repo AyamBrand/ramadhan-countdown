@@ -14,7 +14,9 @@
     "iftar": "Iftar/Maghrib",
     "state": "State",
     "zone": "Zone",
-    "day": "Day"
+    "day": "Day",
+    "month": "February",
+    "tabName": "Schedule"
   },
   "settings": {
     "title": "Settings",
@@ -36,7 +38,8 @@
   "home": {
     "title": "Ramadhan Coming Soon",
     "date": "Date",
-    "poweredBy": "Powered by ©2026 Muktasyaf AnNamir",
+    "month": "February",
+    "poweredBy": "Developed by ©2026 Muktasyaf AnNamir",
     "quote": "Quote"
   },
   "common": {

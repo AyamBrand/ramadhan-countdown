@@ -14,7 +14,9 @@
     "iftar": "Berbuka/Maghrib",
     "state": "Negeri",
     "zone": "Zon",
-    "day": "Hari"
+    "day": "Hari",
+    "month": "Februari",
+    "tabName": "Jadual"
   },
   "settings": {
     "title": "Tetapan",
@@ -36,6 +38,7 @@
   "home": {
     "title": "Ramadhan Akan Tiba",
     "date": "Tarikh",
+    "month": "Februari",
     "poweredBy": "Dibangunkan oleh ©2026 Muktasyaf AnNamir",
     "quote": "Kata Hikmah"
   },
