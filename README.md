@@ -85,6 +85,24 @@ npx eas build --platform android --profile preview
 \\`\\`\\`
 
 
+### Method 3: Test on iOS with Expo Go (No App Store Wait!)
+
+Pengguna iOS boleh test aplikasi sekarang menggunakan **Expo Go** tanpa perlu menunggu versi App Store.
+
+#### Cara Menggunakan:
+
+1. **Install Expo Go** dari Apple App Store
+2. **Buka aplikasi Ramadhan Countdown:**
+   - Scan QR code, ATAU
+   - Buka link: https://expo.dev/preview/update?message=Update+README+with+comprehensive+documentation&updateRuntimeVersion=1.0.0&createdAt=2026-01-07T00%3A57%3A35.942Z&slug=exp&projectId=c4a65723-0ed3-4dd0-9b0b-89b8bf172457&group=12cde052-68ea-4cb9-889b-5d42cc5119de
+
+3. **Nikmati aplikasi** - Semua fitur tersedia!
+
+**Catatan:** Expo Go memerlukan internet untuk memuat aplikasi. Setelah dimuat, mod offline akan berfungsi dengan cache data.
+
+Untuk panduan lengkap pengguna iOS, lihat **`iOS_GUIDE_MS.md`**
+
+
 
 \## 🚀 Usage
 
