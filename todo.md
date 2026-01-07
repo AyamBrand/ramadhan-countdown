@@ -83,3 +83,11 @@
 - [ ] Upload APK to GitHub Release
 - [ ] Make repository public
 - [ ] Add comprehensive README dengan download instructions
+
+
+## Pending Changes (Waiting for User)
+- [ ] User akan update beberapa bahagian lain
+- [ ] Push all changes ke GitHub
+- [ ] Build APK v1.0.1 dengan bug fixes
+- [ ] Create GitHub Release v1.0.1
+- [ ] Update README dengan iOS Expo Go option
