@@ -24,13 +24,5 @@
         "gradleCommand": ":app:bundleRelease"
       }
     }
-  },
-  "submit": {
-    "production": {
-      "android": {
-        "serviceAccount": "keyfile.json",
-        "track": "internal"
-      }
-    }
   }
 }

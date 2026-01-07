@@ -2,9 +2,9 @@
   "countdown": {
     "title": "Ramadhan Coming Soon",
     "days": "DAYS",
-    "hours": "HOURS",
-    "minutes": "MINUTES",
-    "seconds": "SECONDS"
+    "hours": "HRS",
+    "minutes": "MIN",
+    "seconds": "SEC"
   },
   "prayerTimes": {
     "title": "Prayer Times Schedule",
@@ -48,13 +48,12 @@
     "cancel": "Cancel",
     "confirm": "Confirm",
     "loading": "Loading...",
-    "close": "Close",
     "error": "Error",
     "success": "Success"
   },
   "offline": {
     "indicator": "Offline Mode",
     "cached": "Using cached data",
-    "synced": "Data synced"
+    "synced": "Data Synced"
   }
 }

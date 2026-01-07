@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
+import type { TimeIntervalTriggerInput } from "expo-notifications";
 import { useNotificationSettings } from "./use-notification-settings";
 import { useStoredZone } from "./use-stored-zone";
 
@@ -66,16 +67,16 @@ export function useNotificationScheduler() {
         await scheduleNotificationForTime(
           imssakTime,
           notificationMinutes,
-          `Masa Imsak - Hari ${day}`,
-          `Waktu imsak akan tiba dalam ${notificationMinutes} minit`
+          \`Masa Imsak - Hari \${day}\`,
+          \`Waktu imsak akan tiba dalam \${notificationMinutes} minit\`
         );
 
         // Schedule berbuka notification
         await scheduleNotificationForTime(
           bukkaTime,
           notificationMinutes,
-          `Masa Berbuka - Hari ${day}`,
-          `Waktu berbuka akan tiba dalam ${notificationMinutes} minit`
+          \`Masa Berbuka - Hari \${day}\`,
+          \`Waktu berbuka akan tiba dalam \${notificationMinutes} minit\`
         );
       }
 
@@ -111,7 +112,9 @@ export function useNotificationScheduler() {
           sound: "default",
           badge: 1,
         },
-        trigger: secondsFromNow as any,
+        trigger: {
+          seconds: secondsFromNow,
+        } as TimeIntervalTriggerInput,
       });
     } catch (error) {
       console.error("Error scheduling notification:", error);
