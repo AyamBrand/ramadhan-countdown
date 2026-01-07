@@ -228,7 +228,7 @@ export default function SettingsScreen() {
           <ShareButton
             title="Ramadhan Akan Tiba"
             message="Ramadhan Akan Tiba - Aplikasi countdown untuk Malaysia 🌙"
-            url="https://www.annamir.my"
+            url="https://ramadhanweb-jcmx8scd.manus.space"
           />
         </View>
 
