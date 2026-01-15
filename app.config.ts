@@ -3,7 +3,7 @@ import type { ExpoConfig } from "expo/config";
 const config: ExpoConfig = {
   name: "Ramadhan Countdown",
   slug: "ramadan-countdown",
-  version: "1.0.2",
+  version: "1.0.4",
   runtimeVersion: {
     policy: "appVersion",
   },
