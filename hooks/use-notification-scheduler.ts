@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import * as Notifications from "expo-notifications";
-import type { TimeIntervalTriggerInput } from "expo-notifications";
+
 import { useNotificationSettings } from "./use-notification-settings";
 import { useStoredZone } from "./use-stored-zone";
 
@@ -67,20 +67,20 @@ export function useNotificationScheduler() {
         await scheduleNotificationForTime(
           imssakTime,
           notificationMinutes,
-          \`Masa Imsak - Hari \${day}\`,
-          \`Waktu imsak akan tiba dalam \${notificationMinutes} minit\`
+          `Masa Imsak - Hari ${day}`,
+          `Waktu imsak akan tiba dalam ${notificationMinutes} minit`
         );
 
         // Schedule berbuka notification
         await scheduleNotificationForTime(
           bukkaTime,
           notificationMinutes,
-          \`Masa Berbuka - Hari \${day}\`,
-          \`Waktu berbuka akan tiba dalam \${notificationMinutes} minit\`
+          `Masa Berbuka - Hari ${day}`,
+          `Waktu berbuka akan tiba dalam ${notificationMinutes} minit`
         );
       }
 
-      console.log("Notifications scheduled successfully");
+      console.log(`Notifications scheduled successfully for ${RAMADHAN_DAYS} days`);
     } catch (error) {
       console.error("Error scheduling notifications:", error);
     }
@@ -103,8 +103,18 @@ export function useNotificationScheduler() {
         return;
       }
 
-      const secondsFromNow = Math.ceil((triggerTime.getTime() - new Date().getTime()) / 1000);
-      
+      const trigger: any = {
+        type: "calendar",
+        dateComponents: {
+          year: triggerTime.getFullYear(),
+          month: triggerTime.getMonth() + 1,
+          day: triggerTime.getDate(),
+          hour: triggerTime.getHours(),
+          minute: triggerTime.getMinutes(),
+          second: triggerTime.getSeconds(),
+        },
+      };
+
       await Notifications.scheduleNotificationAsync({
         content: {
           title,
@@ -112,9 +122,7 @@ export function useNotificationScheduler() {
           sound: "default",
           badge: 1,
         },
-        trigger: {
-          seconds: secondsFromNow,
-        } as TimeIntervalTriggerInput,
+        trigger,
       });
     } catch (error) {
       console.error("Error scheduling notification:", error);

@@ -1,5 +1,6 @@
 import { View, Text, Pressable, Alert, ScrollView } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import Constants from "expo-constants";
 import { ScreenContainer } from "@/components/screen-container";
 import { useThemeContext } from "@/lib/theme-provider";
 import { useColors } from "@/hooks/use-colors";
@@ -7,6 +8,8 @@ import { useNotificationSettings } from "@/hooks/use-notification-settings";
 import { useTranslation } from "@/hooks/use-translation";
 import { useLanguageContext } from "@/lib/language-provider";
 import { ShareButton } from "@/components/share-button";
+import { AboutSection } from "@/components/about-section";
+import { useCheckUpdates } from "@/hooks/use-check-updates";
 
 /**
  * Halaman Tetapan (Settings)
@@ -18,6 +21,7 @@ export default function SettingsScreen() {
   const { notificationMinutes, notificationEnabled, saveNotificationMinutes, toggleNotification } = useNotificationSettings();
   const t = useTranslation();
   const { language, setLanguage } = useLanguageContext();
+  const { checkForUpdates, isChecking, isDownloading, isInstalling } = useCheckUpdates();
 
   const toggleTheme = () => {
     setColorScheme(colorScheme === "light" ? "dark" : "light");
@@ -194,14 +198,14 @@ export default function SettingsScreen() {
                   <>
                     <MaterialIcons name="dark-mode" size={20} color={colors.primary} />
                     <Text className="text-sm font-semibold text-primary">
-                      Bulan
+                      {t('settings.darkModeLabel')}
                     </Text>
                   </>
                 ) : (
                   <>
                     <MaterialIcons name="light-mode" size={20} color={colors.primary} />
                     <Text className="text-sm font-semibold text-primary">
-                      Matahari
+                      {t('settings.lightModeLabel')}
                     </Text>
                   </>
                 )}
@@ -211,16 +215,64 @@ export default function SettingsScreen() {
         </View>
 
         {/* About Section */}
+        <AboutSection />
+
+        {/* Check for Updates Section */}
         <View className="bg-surface rounded-2xl p-4 mb-4 border border-border">
-          <Text className="text-lg font-semibold text-foreground mb-2">
-            {t('settings.about')}
-          </Text>
-          <Text className="text-sm text-muted mb-2">
-            Ramadhan Countdown v1.0.1
-          </Text>
-          <Text className="text-xs text-muted leading-relaxed">
-            {t('settings.aboutText')}
-          </Text>
+          <Pressable
+            onPress={async () => {
+              try {
+                console.log("Starting update check...");
+                const result = await checkForUpdates();
+                console.log("Update check result:", result);
+                
+                const title = result.isAvailable 
+                  ? t('settings.updateAvailable')
+                  : t('settings.updateNotAvailable');
+                const message = result.message || (result.error ? `Error: ${result.error}` : 'Unknown result');
+                
+                Alert.alert(title, message, [
+                  { text: t('common.confirm'), onPress: () => console.log('Alert dismissed') }
+                ]);
+              } catch (error) {
+                console.error("Error in update check:", error);
+                Alert.alert(
+                  t('settings.updateError'),
+                  error instanceof Error ? error.message : 'Unknown error occurred',
+                  [{ text: t('common.confirm'), onPress: () => {} }]
+                );
+              }
+            }}
+            disabled={isChecking || isDownloading || isInstalling}
+            onPressIn={() => console.log("Button pressed, isChecking:", isChecking)}
+            style={({ pressed }) => [
+              {
+                opacity: pressed && !(isChecking || isDownloading || isInstalling) ? 0.7 : 1,
+              },
+            ]}
+          >
+            <View className="flex-row justify-between items-center">
+              <View className="flex-1">
+                <Text className="text-lg font-semibold text-foreground">
+                  {t('settings.checkUpdates')}
+                </Text>
+                <Text className="text-xs text-muted mt-1">
+                  {isChecking
+                    ? t('settings.checkingUpdates')
+                    : isDownloading
+                    ? t('settings.downloadingUpdate')
+                    : isInstalling
+                    ? t('settings.installingUpdate')
+                    : `v${Constants.expoConfig?.version || '1.0.0'}`}
+                </Text>
+              </View>
+              <MaterialIcons
+                name={isChecking || isDownloading || isInstalling ? 'hourglass-empty' : 'system-update'}
+                size={24}
+                color={colors.primary}
+              />
+            </View>
+          </Pressable>
         </View>
 
         {/* Share Button */}

@@ -1,0 +1,105 @@
+import type { ExpoConfig } from "expo/config";
+
+const config: ExpoConfig = {
+  name: "Ramadhan Countdown",
+  slug: "ramadan-countdown",
+  version: "1.0.4",
+  runtimeVersion: {
+    policy: "appVersion",
+  },
+  updates: {
+    url: "https://u.expo.dev/c4a65723-0ed3-4dd0-9b0b-89b8bf172457"
+  },
+  orientation: "portrait",
+  icon: "./assets/images/icon.png",
+  scheme: "manus20260104114102",
+  userInterfaceStyle: "automatic",
+  newArchEnabled: true,
+  extra: {
+    eas: {
+      projectId: "c4a65723-0ed3-4dd0-9b0b-89b8bf172457",
+    },
+  },
+  ios: {
+    supportsTablet: true,
+    bundleIdentifier: "space.manus.ramadan.countdown.t20260104114102",
+  },
+  android: {
+    adaptiveIcon: {
+      backgroundColor: "#E6F4FE",
+      foregroundImage: "./assets/images/android-icon-foreground.png",
+      backgroundImage: "./assets/images/android-icon-background.png",
+      monochromeImage: "./assets/images/android-icon-monochrome.png",
+    },
+    edgeToEdgeEnabled: true,
+    predictiveBackGestureEnabled: false,
+    package: "space.manus.ramadan.countdown.t20260104114102",
+    permissions: ["POST_NOTIFICATIONS"],
+    intentFilters: [
+      {
+        action: "VIEW",
+        autoVerify: true,
+        data: [
+          {
+            scheme: "manus20260104114102",
+            host: "*",
+          },
+        ],
+        category: ["BROWSABLE", "DEFAULT"],
+      },
+    ],
+  },
+  web: {
+    bundler: "metro",
+    output: "static",
+    favicon: "./assets/images/favicon.png",
+  },
+  plugins: [
+    "expo-router",
+    [
+      "expo-font",
+      {
+        fonts: ["./assets/fonts/ARIALBLACKITALIC.ttf"],
+      },
+    ],
+    [
+      "expo-audio",
+      {
+        microphonePermission: "Allow $(PRODUCT_NAME) to access your microphone.",
+      },
+    ],
+    [
+      "expo-video",
+      {
+        supportsBackgroundPlayback: true,
+        supportsPictureInPicture: true,
+      },
+    ],
+    [
+      "expo-splash-screen",
+      {
+        image: "./assets/images/splash-icon.png",
+        imageWidth: 200,
+        resizeMode: "contain",
+        backgroundColor: "#ffffff",
+        dark: {
+          backgroundColor: "#000000",
+        },
+      },
+    ],
+    [
+      "expo-build-properties",
+      {
+        android: {
+          buildArchs: ["armeabi-v7a", "arm64-v8a"],
+        },
+      },
+    ],
+  ],
+  experiments: {
+    typedRoutes: true,
+    reactCompiler: true,
+  },
+};
+
+export default config;

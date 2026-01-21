@@ -23,8 +23,8 @@ export function useCountdown(): CountdownTime {
 
   useEffect(() => {
     const calculateCountdown = () => {
-      // Target: 18 Februari 2026 pada pukul 00:00:00
-      const targetDate = new Date(2026, 1, 18, 0, 0, 0).getTime();
+      // Target: 19 Februari 2026 pada pukul 00:00:00 (tengah malam)
+      const targetDate = new Date(2026, 1, 19, 0, 0, 0).getTime();
       const now = new Date().getTime();
       const difference = targetDate - now;
 

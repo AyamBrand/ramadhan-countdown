@@ -6,6 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import "react-native-reanimated";
 import { Platform } from "react-native";
+import * as Updates from "expo-updates";
 import "@/lib/_core/nativewind-pressable";
 import { ThemeProvider } from "@/lib/theme-provider";
 import { LanguageProvider } from "@/lib/language-provider";
@@ -37,6 +38,36 @@ function RootLayoutContent() {
   // Initialize Manus runtime for cookie injection from parent container
   useEffect(() => {
     initManusRuntime();
+  }, []);
+
+  // Check for OTA updates on app launch
+  useEffect(() => {
+    const checkForUpdates = async () => {
+      try {
+        // Only check for updates on native platforms
+        if (Platform.OS === "web") return;
+
+        // Check if updates are enabled
+        if (!Updates.isEnabled) {
+          console.log("Updates are not enabled in this build");
+          return;
+        }
+
+        const update = await Updates.checkForUpdateAsync();
+        if (update.isAvailable) {
+          console.log("Update available, downloading...");
+          await Updates.fetchUpdateAsync();
+          console.log("Update downloaded, reloading app...");
+          await Updates.reloadAsync();
+        } else {
+          console.log("App is up to date");
+        }
+      } catch (error) {
+        console.error("Error checking for updates:", error);
+      }
+    };
+
+    checkForUpdates();
   }, []);
 
   const handleSafeAreaUpdate = useCallback((metrics: Metrics) => {
@@ -84,6 +115,7 @@ function RootLayoutContent() {
       <LanguageProvider>
         <trpc.Provider client={trpcClient} queryClient={queryClient}>
           <QueryClientProvider client={queryClient}>
+          {/* Check for updates and reload if available */}
           {/* Default to hiding native headers so raw route segments don't appear (e.g. "(tabs)", "products/[id]"). */}
           {/* If a screen needs the native header, explicitly enable it and set a human title via Stack.Screen options. */}
           <Stack screenOptions={{ headerShown: false }}>
