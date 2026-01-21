@@ -36,12 +36,17 @@ export function CountdownDisplay() {
   return (
     <View className="items-center justify-center gap-8">
       {/* Heading */}
+            {/* Heading */}
       <View className="items-center gap-2">
         <Text className="text-4xl font-bold text-foreground">
-          {t('countdown.title')}
+          {countdown.eventType === "hariraya" && countdown.isRamadan
+            ? t('countdown.titleHariRaya')
+            : t('countdown.title')}
         </Text>
         <Text className="text-base text-muted">
-          {t('home.date')}: 19 {t('home.month')} 2026
+          {countdown.eventType === "hariraya" && countdown.isRamadan
+            ? `${t('home.date')}: 27 ${t('home.monthMay')} 2026`
+            : `${t('home.date')}: 19 ${t('home.month')} 2026`}
         </Text>
       </View>
 
