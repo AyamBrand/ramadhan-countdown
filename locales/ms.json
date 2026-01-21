@@ -1,6 +1,7 @@
 {
   "countdown": {
     "title": "Ramadhan Akan Tiba",
+    "titleHariRaya": "Hari Raya Qurban Akan Tiba",
     "days": "HARI",
     "hours": "JAM",
     "minutes": "MIN",
@@ -51,6 +52,7 @@
     "title": "Ramadhan Akan Tiba",
     "date": "Tarikh",
     "month": "Februari",
+    "monthMay": "Mei",
     "homeTab": "Utama",
     "poweredBy": "Dibangunkan oleh ©2026 Muktasyaf AnNamir",
     "quote": "Kata Hikmah"
