@@ -10,21 +10,21 @@ const styles = StyleSheet.create({
   },
 });
 
-/**
- * Komponen untuk memaparkan countdown Ramadhan
- * Menunjukkan hari, jam, minit, dan saat
- */
 export function CountdownDisplay() {
   const countdown = useCountdown();
   const colors = useColors();
   const quote = useRandomQuote();
   const t = useTranslation();
 
-  if (countdown.isRamadan) {
+  if (countdown.isRamadan || countdown.isHariRayaQurban) {
+    const title = countdown.isHariRayaQurban 
+      ? t('countdown.titleHariRaya')
+      : t('countdown.title');
+    
     return (
       <View className="items-center justify-center gap-4">
         <Text className="text-5xl font-bold text-primary">
-          {t('countdown.title')} 🌙
+          {title} 🌙
         </Text>
         <Text className="text-lg text-muted text-center">
           {t('home.quote')}
@@ -33,19 +33,25 @@ export function CountdownDisplay() {
     );
   }
 
+  const displayTitle = countdown.eventType === "hariraya" && countdown.isRamadan
+    ? t('countdown.titleHariRaya')
+    : t('countdown.title');
+    
+  const displayDate = countdown.eventType === "hariraya" && countdown.isRamadan
+    ? `${t('home.date')}: 27 ${t('home.monthMay')} 2026`
+    : `${t('home.date')}: 19 ${t('home.month')} 2026`;
+
   return (
     <View className="items-center justify-center gap-8">
-      {/* Heading */}
       <View className="items-center gap-2">
         <Text className="text-4xl font-bold text-foreground">
-          {t('countdown.title')}
+          {displayTitle}
         </Text>
         <Text className="text-base text-muted">
-          {t('home.date')}: 18 {t('home.month')} 2026
+          {displayDate}
         </Text>
       </View>
 
-      {/* Countdown - Days (Large, Center) */}
       <View className="items-center bg-surface rounded-2xl p-8">
         <Text className="text-9xl font-bold text-primary" style={styles.androidNumberFont}>
           {countdown.days}
@@ -55,9 +61,7 @@ export function CountdownDisplay() {
         </Text>
       </View>
 
-      {/* Countdown - Hours, Minutes, Seconds (Small, Below) */}
       <View className="flex-row gap-3 justify-center">
-        {/* Hours */}
         <View className="items-center bg-surface rounded-2xl p-4 w-20">
           <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.hours).padStart(2, "0")}
@@ -67,7 +71,6 @@ export function CountdownDisplay() {
           </Text>
         </View>
 
-        {/* Minutes */}
         <View className="items-center bg-surface rounded-2xl p-4 w-20">
           <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.minutes).padStart(2, "0")}
@@ -77,7 +80,6 @@ export function CountdownDisplay() {
           </Text>
         </View>
 
-        {/* Seconds */}
         <View className="items-center bg-surface rounded-2xl p-4 w-20">
           <Text className="text-3xl font-bold text-primary" style={styles.androidNumberFont}>
             {String(countdown.seconds).padStart(2, "0")}
@@ -88,7 +90,6 @@ export function CountdownDisplay() {
         </View>
       </View>
 
-      {/* Motivational Message */}
       <View className="bg-surface rounded-2xl p-6 max-w-xs">
         <Text className="text-center text-base text-foreground leading-relaxed">
           {quote}
