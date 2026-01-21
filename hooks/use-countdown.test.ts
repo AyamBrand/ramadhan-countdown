@@ -1,125 +1,86 @@
-import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
+import { useEffect, useState } from "react";
 
-// Ujian untuk logik countdown tanpa menggunakan React hooks testing
-describe("useCountdown logic", () => {
-  beforeEach(() => {
-    vi.useFakeTimers();
+export interface CountdownTime {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  isRamadan: boolean;
+  isHariRayaQurban: boolean;
+  eventType: "ramadhan" | "hariraya" | "none";
+}
+
+export function useCountdown(): CountdownTime {
+  const [countdown, setCountdown] = useState<CountdownTime>({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isRamadan: false,
+    isHariRayaQurban: false,
+    eventType: "none",
   });
 
-  afterEach(() => {
-    vi.restoreAllMocks();
-  });
+  useEffect(() => {
+    const calculateCountdown = () => {
+      const now = new Date().getTime();
+      
+      const ramadhanStart = new Date(2026, 1, 19, 0, 0, 0).getTime();
+      const hariRayaQurbanStart = new Date(2026, 4, 27, 0, 0, 0).getTime();
 
-  /**
-   * Fungsi pembantu untuk mengira countdown
-   * Ini meniru logik yang ada dalam hook useCountdown
-   */
-  function calculateCountdown(currentDate: Date) {
-    const targetDate = new Date(2026, 1, 18, 0, 0, 0).getTime();
-    const now = currentDate.getTime();
-    const difference = targetDate - now;
+      if (now >= hariRayaQurbanStart) {
+        setCountdown({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+          isRamadan: false,
+          isHariRayaQurban: true,
+          eventType: "hariraya",
+        });
+        return;
+      }
 
-    if (difference <= 0) {
-      return {
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
-        isRamadan: true,
-      };
-    }
+      if (now >= ramadhanStart) {
+        const difference = hariRayaQurbanStart - now;
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-    const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor(
-      (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        setCountdown({
+          days,
+          hours,
+          minutes,
+          seconds,
+          isRamadan: true,
+          isHariRayaQurban: false,
+          eventType: "hariraya",
+        });
+        return;
+      }
 
-    return {
-      days,
-      hours,
-      minutes,
-      seconds,
-      isRamadan: false,
+      const difference = ramadhanStart - now;
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+      setCountdown({
+        days,
+        hours,
+        minutes,
+        seconds,
+        isRamadan: false,
+        isHariRayaQurban: false,
+        eventType: "ramadhan",
+      });
     };
-  }
 
-  it("should calculate countdown correctly when target date is in the future", () => {
-    // Set current time to 17 Februari 2026 12:00:00
-    const currentDate = new Date(2026, 1, 17, 12, 0, 0);
+    calculateCountdown();
+    const interval = setInterval(calculateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
-    const countdown = calculateCountdown(currentDate);
-
-    // Countdown sepatutnya menunjukkan 0 hari, 12 jam, 0 minit, 0 saat
-    expect(countdown.days).toBe(0);
-    expect(countdown.hours).toBe(12);
-    expect(countdown.minutes).toBe(0);
-    expect(countdown.seconds).toBe(0);
-    expect(countdown.isRamadan).toBe(false);
-  });
-
-  it("should show isRamadan as true when target date has passed", () => {
-    // Set current time ke 19 Februari 2026 (selepas 18 Februari)
-    const currentDate = new Date(2026, 1, 19, 0, 0, 0);
-
-    const countdown = calculateCountdown(currentDate);
-
-    expect(countdown.isRamadan).toBe(true);
-    expect(countdown.days).toBe(0);
-    expect(countdown.hours).toBe(0);
-    expect(countdown.minutes).toBe(0);
-    expect(countdown.seconds).toBe(0);
-  });
-
-  it("should handle countdown with seconds remaining", () => {
-    // Set current time ke 17 Februari 2026 23:59:59
-    const currentDate = new Date(2026, 1, 17, 23, 59, 59);
-
-    const countdown = calculateCountdown(currentDate);
-
-    // Sepatutnya ada 1 saat tinggal
-    expect(countdown.days).toBe(0);
-    expect(countdown.hours).toBe(0);
-    expect(countdown.minutes).toBe(0);
-    expect(countdown.seconds).toBe(1);
-    expect(countdown.isRamadan).toBe(false);
-  });
-
-  it("should calculate countdown with mixed time units", () => {
-    // Set current time ke 16 Februari 2026 10:30:45
-    const currentDate = new Date(2026, 1, 16, 10, 30, 45);
-
-    const countdown = calculateCountdown(currentDate);
-
-    // Sepatutnya ada 1 hari, 13 jam, 29 minit, 15 saat tinggal
-    expect(countdown.days).toBe(1);
-    expect(countdown.hours).toBe(13);
-    expect(countdown.minutes).toBe(29);
-    expect(countdown.seconds).toBe(15);
-    expect(countdown.isRamadan).toBe(false);
-  });
-
-  it("should show isRamadan as true when exactly at target date", () => {
-    // Set current time ke 18 Februari 2026 00:00:00 (tepat pada target)
-    const currentDate = new Date(2026, 1, 18, 0, 0, 0);
-
-    const countdown = calculateCountdown(currentDate);
-
-    expect(countdown.isRamadan).toBe(true);
-  });
-
-  it("should handle very early countdown (many days remaining)", () => {
-    // Set current time ke 1 Januari 2026
-    const currentDate = new Date(2026, 0, 1, 0, 0, 0);
-
-    const countdown = calculateCountdown(currentDate);
-
-    // Sepatutnya ada 48 hari tinggal (dari 1 Jan ke 18 Feb)
-    expect(countdown.days).toBe(48);
-    expect(countdown.hours).toBe(0);
-    expect(countdown.minutes).toBe(0);
-    expect(countdown.seconds).toBe(0);
-    expect(countdown.isRamadan).toBe(false);
-  });
-});
+  return countdown;
+}

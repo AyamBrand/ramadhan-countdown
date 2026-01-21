@@ -1,6 +1,7 @@
 {
   "countdown": {
     "title": "Ramadhan Coming Soon",
+    "titleHariRaya": "Eid al-Adha Coming Soon",
     "days": "DAYS",
     "hours": "HRS",
     "minutes": "MIN",
@@ -51,6 +52,7 @@
     "title": "Ramadhan Coming Soon",
     "date": "Date",
     "month": "February",
+    "monthMay": "May",
     "homeTab": "Home",
     "poweredBy": "Developed by ©2026 Muktasyaf AnNamir",
     "quote": "Quote"
