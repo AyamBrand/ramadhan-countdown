@@ -24,8 +24,8 @@ export function useCountdown(): CountdownTime {
   useEffect(() => {
     const calculateCountdown = () => {
       const now = new Date().getTime();
-      const ramadhanStart = new Date(2026, 1, 19, 0, 0, 0).getTime();
-      const hariRayaQurbanStart = new Date(2026, 4, 27, 0, 0, 0).getTime();
+      const ramadhanStart = new Date("2026-02-19T00:00:00+08:00").getTime();
+      const hariRayaQurbanStart = new Date("2026-05-27T00:00:00+08:00").getTime();
 
       if (now >= hariRayaQurbanStart) {
         setCountdown({
