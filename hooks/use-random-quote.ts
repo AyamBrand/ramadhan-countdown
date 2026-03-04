@@ -1,43 +1,43 @@
 import { useEffect, useState } from "react";
 
 /**
- * Hook untuk mendapatkan random kata hikmah tentang Ramadhan
+ * Hook untuk mendapatkan random kata hikmah umum
  * Kata hikmah akan berubah setiap kali app dibuka
  */
 export function useRandomQuote(): string {
   const [quote, setQuote] = useState<string>("");
 
   const quotes = [
-    "Ramadhan adalah bulan berkah, bulan ampunan, dan bulan pembebasan dari neraka.",
-    "Puasa adalah perisai, maka apabila salah seorang di antara kamu berpuasa, janganlah berbuat keji dan janganlah berteriak.",
-    "Dalam Ramadhan, pintu-pintu surga dibuka dan pintu-pintu neraka ditutup, serta syaitan-syaitan dirantai.",
-    "Barangsiapa yang berpuasa Ramadhan dengan iman dan mengharap pahala dari Allah, maka dihapuskan dosa-dosanya yang telah lalu.",
-    "Makanan dan minuman yang halal adalah kunci keberkatan hidup kita, terutama saat berpuasa.",
-    "Ramadhan adalah kesempatan emas untuk mendekatkan diri kepada Allah dan memperbaiki akhlak.",
-    "Jangan sia-siakan Ramadhan dengan hal-hal yang tidak bermanfaat, manfaatkan setiap detik untuk ibadah.",
-    "Orang yang berpuasa akan merasakan kesulitan lapar dan haus, sehingga dapat merasakan penderitaan orang-orang yang kurang mampu.",
-    "Berbagi rezeki kepada yang membutuhkan di bulan Ramadhan akan mendapat pahala berlipat ganda.",
-    "Niat yang ikhlas adalah fondasi dari setiap ibadah, termasuk puasa di bulan Ramadhan.",
-    "Ramadhan mengajarkan kita untuk sabar, disiplin, dan mengendalikan hawa nafsu.",
-    "Setiap detik di bulan Ramadhan adalah peluang untuk bertaubat dan memulai hidup yang lebih baik.",
-    "Doa di bulan Ramadhan, terutama saat berbuka, memiliki kekuatan yang luar biasa untuk dikabulkan.",
-    "Membaca Al-Quran di bulan Ramadhan adalah ibadah yang sangat mulia dan penuh berkah.",
-    "Jangan lupa untuk menjaga silaturahmi dengan keluarga dan teman-teman di bulan Ramadhan.",
-    "Ramadhan adalah bulan untuk mengevaluasi diri dan memperbaiki kesalahan-kesalahan yang telah kita lakukan.",
-    "Orang yang berpuasa akan mendapatkan doa dari malaikat hingga berbuka puasa.",
-    "Kesabaran dalam menghadapi godaan dan tantangan di bulan Ramadhan akan memperkuat iman kita.",
-    "Berbuka puasa dengan makanan sederhana namun dengan rasa syukur lebih bernilai daripada makanan mewah tanpa rasa syukur.",
-    "Ramadhan adalah waktu yang tepat untuk meninggalkan kebiasaan-kebiasaan buruk dan memulai hidup yang lebih bermakna.",
-    "Setiap puasa yang kita lakukan adalah investasi untuk akhirat yang lebih baik.",
-    "Jangan sampai perut kita kenyang tetapi hati kita tetap kosong dari keimanan di bulan Ramadhan.",
-    "Ramadhan mengajarkan kita untuk menghargai nikmat-nikmat yang Allah berikan kepada kita.",
-    "Orang yang berpuasa dengan tulus ikhlas akan merasakan kedamaian dan ketenangan dalam hatinya.",
-    "Ramadhan adalah bulan untuk memperkuat hubungan kita dengan Allah melalui ibadah dan doa.",
-    "Jangan sia-siakan kesempatan di bulan Ramadhan untuk meminta maaf dan memberikan maaf kepada orang lain.",
-    "Puasa bukan hanya tentang menahan lapar dan haus, tetapi juga tentang menahan lisan dari perkataan yang tidak baik.",
-    "Ramadhan adalah bulan untuk belajar dari kesalahan-kesalahan masa lalu dan tidak mengulanginya di masa depan.",
-    "Setiap hari di bulan Ramadhan adalah kesempatan baru untuk menjadi lebih baik dari hari sebelumnya.",
-    "Ramadhan adalah hadiah dari Allah untuk kita, manfaatkan dengan sebaik-baiknya untuk mendekatkan diri kepada-Nya.",
+    "Kesabaran adalah kunci kejayaan, kebahagiaan, dan kedamaian hidup.",
+    "Berbuat baik kepada orang lain adalah pelaburan terbaik untuk masa depan kita.",
+    "Ilmu adalah cahaya yang menerangi jalan kehidupan kita menuju kejayaan.",
+    "Jangan menunda-nunda kerja hari ini, kerana hari esok tidak dijamin untuk kita.",
+    "Kejujuran adalah asas kepercayaan dan hubungan yang kuat dengan orang lain.",
+    "Setiap masalah yang kita hadapi adalah ujian dan peluang untuk berkembang menjadi lebih baik.",
+    "Bersyukur atas nikmat kecil akan membuka pintu untuk mendapatkan nikmat yang lebih besar.",
+    "Kejayaan bukan hanya tentang wang, tetapi tentang kebahagiaan dan kepuasan hati.",
+    "Menghormati ibu bapa adalah kewajiban yang akan membawa berkah dalam hidup kita.",
+    "Pendidikan adalah pelaburan terbaik yang tidak akan pernah hilang atau dicuri.",
+    "Jangan menilai orang lain berdasarkan penampilan, kerana hati adalah yang terpenting.",
+    "Kerendahan hati adalah tanda kekuatan sejati, bukan kelemahan.",
+    "Membantu orang lain tanpa mengharap balasan adalah amal yang paling mulia.",
+    "Kesihatan adalah harta yang paling berharga, jaga dengan baik sebelum terlambat.",
+    "Niat yang baik adalah permulaan dari setiap perbuatan yang bermakna dan bermanfaat.",
+    "Jangan pernah menyerah pada impian anda, kerana kejayaan datang bagi yang gigih.",
+    "Kebijaksanaan adalah hasil dari pengalaman dan pembelajaran yang berterusan.",
+    "Cinta dan kasih sayang adalah bahasa universal yang dapat menyatukan semua orang.",
+    "Kesilapan adalah guru terbaik, jangan takut untuk belajar dari kegagalan.",
+    "Hidup adalah tentang perjalanan, bukan hanya tentang tujuan akhir.",
+    "Keberanian adalah melakukan perkara yang betul walaupun takut dan kesukaran.",
+    "Persahabatan yang tulus adalah harta karun yang lebih berharga daripada emas.",
+    "Jangan mengeluh tentang masa lalu, fokus pada masa depan yang lebih baik.",
+    "Ketekunan dan kerja keras adalah kunci untuk mencapai semua impian kita.",
+    "Kerendahan hati dalam kejayaan adalah tanda watak yang mulia.",
+    "Memberi adalah lebih berkah daripada menerima, kerana memberi membuat hati gembira.",
+    "Setiap hari adalah peluang baru untuk menjadi versi terbaik daripada diri kita.",
+    "Kepercayaan adalah hadiah yang diberikan dengan hati, jangan pernah mengkhianatinya.",
+    "Hidup dengan tujuan dan makna adalah kunci untuk kebahagiaan sejati.",
+    "Kebaikan yang kita lakukan hari ini akan menjadi kebahagiaan orang lain di masa depan.",
   ];
 
   useEffect(() => {

@@ -14,6 +14,7 @@ export function CountdownDisplay() {
   const quote = useRandomQuote();
   const t = useTranslation();
 
+<<<<<<< Updated upstream
   const styles = StyleSheet.create({
     container: {
       alignItems: "center",
@@ -109,6 +110,13 @@ export function CountdownDisplay() {
       <View style={styles.ramadanContainer}>
         <Text style={styles.ramadanTitle}>
           {t('countdown.title')} 🌙
+=======
+  if (countdown.isHariRayaQurban) {
+    return (
+      <View className="items-center justify-center gap-4">
+        <Text className="text-5xl font-bold text-primary">
+          {t('countdown.titleHariRaya')} 🌙
+>>>>>>> Stashed changes
         </Text>
         <Text style={styles.ramadanMessage}>
           {t('home.quote')}
@@ -120,6 +128,7 @@ export function CountdownDisplay() {
   return (
     <View style={styles.container}>
       {/* Heading */}
+<<<<<<< Updated upstream
       <View style={styles.heading}>
         <Text style={styles.headingTitle}>
           {countdown.eventType === "hariraya" && countdown.isRamadan
@@ -128,6 +137,16 @@ export function CountdownDisplay() {
         </Text>
         <Text style={styles.headingSubtitle}>
           {countdown.eventType === "hariraya" && countdown.isRamadan
+=======
+      <View className="items-center gap-2">
+        <Text className="text-4xl font-bold text-foreground">
+          {countdown.isRamadan
+            ? t('countdown.titleHariRaya')
+            : t('countdown.title')}
+        </Text>
+        <Text className="text-base text-muted">
+          {countdown.isRamadan
+>>>>>>> Stashed changes
             ? `${t('home.date')}: 27 ${t('home.monthMay')} 2026`
             : `${t('home.date')}: 19 ${t('home.month')} 2026`}
         </Text>
